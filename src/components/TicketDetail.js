@@ -3,10 +3,15 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 // We import ThemeContext.
 import { ThemeContext } from "../context/theme-context";
+
 function TicketDetail(props){
   const { ticket, onClickingDelete, onClickingEdit } = props; 
  // We create our consumer.
   const theme = useContext(ThemeContext);
+
+  if (!theme) {
+    throw new Error("ThemeContext must be used within a ThemeContext.Provider!");
+  }
 
  // We create our styles.
   const styles = { 

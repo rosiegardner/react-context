@@ -64,10 +64,15 @@ class TicketControl extends React.Component {
     const selectedTicket = this.state.mainTicketList.filter(ticket => ticket.id === id)[0];
     this.setState({selectedTicket: selectedTicket});
   }
+  
 
   render(){
     let theme = this.context;
 
+    if (!theme) {
+      throw new Error("ThemeContext must be used within a ThemeContext.Provider!");
+    }
+    
     const buttonStyles = {
       backgroundColor: theme.buttonBackground,
       color: theme.textColor
